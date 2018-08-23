@@ -3,6 +3,7 @@ var saida = document.querySelector("#saida");
 var botao = document.querySelector("#adivinhe");
 var recomecar = document.querySelector("#recomecar");
 var aleatorio = Math.floor((Math.random() * 100) + 1);
+var txtNumero = document.querySelector("#txtNumero");
 var vencedor = false;
 var tentativas = 10;
 var tentativasExe = 0;
@@ -16,14 +17,13 @@ function enter(event) {
 }
 
 function verificaNumero() {
-	numero = document.querySelector("#txtNumero");
-	numero = numero.value;
+	var numero = parseInt(txtNumero.value);
 
 	if (isNaN(numero) || numero < 1 || numero > 100) {
 
 		alert("O valor digitado não é valido!");
-		numero.value = "";
-		numero.focus();
+		txtNumero.value = "";
+		txtNumero.focus();
 
 	} else if (numero < aleatorio) {
 
