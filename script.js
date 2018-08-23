@@ -64,11 +64,13 @@ function end() {
 
 	if (vencedor) {
 
+		var s = tentativasExe === 1 ? '' : 's';
+
 		botao.style.visibility = "hidden";
 		chances.style.visibility = "hidden";
 		saida.style.visibility = "hidden";
 		txtNumero.style.visibility = "hidden";
-		entrada.innerHTML = "Você acertou em " + tentativasExe + " tentativas, parabéns!!!!";
+		entrada.innerHTML = `Você acertou em ${tentativasExe} tentativa${s}, parabéns!!!!`;
 		recomecar.style.visibility = "visible";
 
 	} else {
