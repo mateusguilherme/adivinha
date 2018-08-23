@@ -20,7 +20,7 @@ function verificaNumero() {
 	numero = numero.value;
 
 	if (isNaN(numero) || numero < 1 || numero > 100) {
-		
+
 		alert("O valor digitado não é valido!");
 		numero.value = "";
 		numero.focus();
@@ -29,19 +29,19 @@ function verificaNumero() {
 
 		saida.innerHTML = "O número digitado é menor!";
 		verificaChances();
-	
+
 	} else if (numero > aleatorio) {
-	
+
 		saida.innerHTML = "O número digitado é maior!";
 		verificaChances();
-	
+
 	} else if (numero == aleatorio) {
-	
+
 		vencedor = true;
 		verificaChances();
 		end();
-	
-	}	
+
+	}
 }
 
 function verificaChances() {
@@ -49,14 +49,14 @@ function verificaChances() {
 	tentativasExe++;
 
 	if(tentativas == 0) {
-		
+
 		end();
-	
+
 	} else {
-		
+
 		saida.style.visibility = "visible";
 		chances.innerHTML = "Você tem " + tentativas + " tentativas";
-	
+
 	}
 }
 
@@ -97,5 +97,5 @@ window.onload = function() {
 	chances.innerHTML = "Você tem " + tentativas + " tentativas";
 	saida.innerHTML = "Default";
 	saida.style.visibility = "hidden";
-	
+
 }
