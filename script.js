@@ -3,6 +3,7 @@ var saida = document.querySelector("#saida");
 var botao = document.querySelector("#adivinhe");
 var recomecar = document.querySelector("#recomecar");
 var aleatorio = Math.floor((Math.random() * 100) + 1);
+var txtNumero = document.querySelector("#txtNumero");
 var vencedor = false;
 var tentativas = 10;
 var tentativasExe = 0;
@@ -16,32 +17,31 @@ function enter(event) {
 }
 
 function verificaNumero() {
-	numero = document.querySelector("#txtNumero");
-	numero = numero.value;
+	var numero = parseInt(txtNumero.value);
 
 	if (isNaN(numero) || numero < 1 || numero > 100) {
-		
+
 		alert("O valor digitado não é valido!");
-		numero.value = "";
-		numero.focus();
+		txtNumero.value = "";
+		txtNumero.focus();
 
 	} else if (numero < aleatorio) {
 
 		saida.innerHTML = "O número digitado é menor!";
 		verificaChances();
-	
+
 	} else if (numero > aleatorio) {
-	
+
 		saida.innerHTML = "O número digitado é maior!";
 		verificaChances();
-	
+
 	} else if (numero == aleatorio) {
-	
+
 		vencedor = true;
 		verificaChances();
 		end();
-	
-	}	
+
+	}
 }
 
 function verificaChances() {
@@ -49,14 +49,14 @@ function verificaChances() {
 	tentativasExe++;
 
 	if(tentativas == 0) {
-		
+
 		end();
-	
+
 	} else {
-		
+
 		saida.style.visibility = "visible";
 		chances.innerHTML = "Você tem " + tentativas + " tentativas";
-	
+
 	}
 }
 
@@ -64,11 +64,13 @@ function end() {
 
 	if (vencedor) {
 
+		var s = tentativasExe === 1 ? '' : 's';
+
 		botao.style.visibility = "hidden";
 		chances.style.visibility = "hidden";
 		saida.style.visibility = "hidden";
 		txtNumero.style.visibility = "hidden";
-		entrada.innerHTML = "Você acertou em " + tentativasExe + " tentativas, parabéns!!!!";
+		entrada.innerHTML = `Você acertou em ${tentativasExe} tentativa${s}, parabéns!!!!`;
 		recomecar.style.visibility = "visible";
 
 	} else {
@@ -97,5 +99,5 @@ window.onload = function() {
 	chances.innerHTML = "Você tem " + tentativas + " tentativas";
 	saida.innerHTML = "Default";
 	saida.style.visibility = "hidden";
-	
+
 }
